@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raporti Teknik 1 – Fermerët dhe Produktet Bujqësore</title>
+  <style>
+    :root {
+      --bg: #0f2418;
+      --card: #163323;
+      --accent: #8bc34a;
+      --text: #f4f7f2;
+      --muted: #c5d4c0;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", system-ui, sans-serif; }
+    .slide {
+      display: none;
+      min-height: 100vh;
+      padding: 4.5rem 8vw 5rem;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide.active { display: flex; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin: 0 0 0.75rem; }
+    h2 { color: var(--accent); font-size: clamp(1.35rem, 3vw, 2rem); margin: 0 0 1rem; }
+    p, li { font-size: 1.12rem; line-height: 1.55; color: var(--muted); }
+    ul, ol { padding-left: 1.2rem; }
+    .meta { color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.88rem; }
+    table { border-collapse: collapse; width: 100%; max-width: 920px; }
+    th, td { border: 1px solid #2e5640; padding: 0.55rem 0.7rem; text-align: left; }
+    th { background: #1d3d2a; color: var(--accent); }
+    .nav { position: fixed; bottom: 1rem; right: 1.2rem; color: var(--muted); font-size: 0.9rem; }
+    .hint { position: fixed; bottom: 1rem; left: 1.2rem; color: #7a9478; font-size: 0.85rem; }
+    .box {
+      background: var(--card); border: 1px solid #2e5640; border-radius: 12px;
+      padding: 0.9rem 1.1rem; margin: 0.4rem 0; max-width: 920px;
+    }
+    .arch { font-family: ui-monospace, Consolas, monospace; white-space: pre; color: #d6ecc4; font-size: 1rem; }
+    a { color: var(--accent); }
+    @media (max-width: 700px) {
+      .slide { padding: 3rem 1.2rem 4.5rem; }
+      p, li { font-size: 1rem; }
+      .arch { font-size: 0.78rem; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <section class="slide active">
+    <p class="meta">Projekt – Praktikë Profesionale | Semestri V</p>
+    <h1>Sistemi për Menaxhimin e Fermerëve dhe Produkteve Bujqësore</h1>
+    <p>Raporti Teknik 1 – Analiza, kërkesat dhe dizajni teknik</p>
+    <p>Mendim Shala · 240329048.b@uni-prizren.com</p>
+    <p><a href="https://github.com/MendimShala/Sistem-menaxhimi-Fermereve">github.com/MendimShala/Sistem-menaxhimi-Fermereve</a></p>
+  </section>
+
+  <section class="slide">
+    <h2>Problemi</h2>
+    <p>Nuk ka një vend të vetëm dixhital ku të dihet <strong>cili fermer prodhon cilin produkt bujqësor</strong>, në çfarë sasie dhe me çfarë çmimi.</p>
+    <ul>
+      <li>Evidenca e fermerëve dhe e produkteve mbetet në fletore/Excel.</li>
+      <li>Blerësit nuk e shohin ofertën e disponueshme.</li>
+      <li>Mungon lidhja e qartë fermer → produkt → porosi.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Për kë ndërtohet</h2>
+    <table>
+      <tr><th>Roli</th><th>Përgjegjësia</th></tr>
+      <tr><td>Administrator</td><td>Llogaritë dhe katalogu i produkteve bujqësore</td></tr>
+      <tr><td>Fermer</td><td>Profili, ngastrat, prodhimi, ofertat, pranimi i porosive</td></tr>
+      <tr><td>Blerës</td><td>Kërkim produktesh, porosi, ndjekja e statusit</td></tr>
+    </table>
+    <p>Fokusi i temës është fermeri dhe produkti, jo stafi i brendshëm i fermës.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Fluksi kryesor</h2>
+    <ol>
+      <li>Hyrje me email dhe fjalëkalim.</li>
+      <li>Fermeri plotëson profilin (komuna, fshati, sipërfaqja).</li>
+      <li>Admin mban katalogun: kategori + produkt (p.sh. Perime → Domate).</li>
+      <li>Fermeri regjistron prodhimin dhe publikon ofertën.</li>
+      <li>Blerësi porosit; fermeri pranon; sasia e ofertës zvogëlohet.</li>
+    </ol>
+  </section>
+
+  <section class="slide">
+    <h2>Funksionalitetet e semestrit</h2>
+    <ul>
+      <li>Autentikim me role ADMIN, FERMER, BLERES.</li>
+      <li>Profili i fermerit dhe i blerësit.</li>
+      <li>Katalogu i produkteve bujqësore (admin).</li>
+      <li>Ngastrat e tokës dhe evidenca e prodhimit.</li>
+      <li>Oferta për shitje, kërkim dhe filtrim.</li>
+      <li>Porosi dhe ndryshim statusi.</li>
+      <li>Dashboard: oferta aktive, porosi në pritje, numri i fermerëve.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Kërkesa funksionale (shembuj)</h2>
+    <div class="box">KF-02: Fermeri ruan profilin me komunë, fshat dhe sipërfaqe &gt; 0.</div>
+    <div class="box">KF-04: Emri i produktit në katalog është unik (“Domate” nuk përsëritet).</div>
+    <div class="box">KF-07: Porosia nuk kalon sasinë e ofertës aktive.</div>
+    <div class="box">KF-08: Pranimi i porosisë zvogëlon stokun; shuma = sasia × çmimi.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Kërkesa jofunksionale</h2>
+    <div class="box">KJ-01: Fjalëkalimet vetëm si hash (BCrypt).</div>
+    <div class="box">KJ-02: Endpoint privat pa JWT → 401.</div>
+    <div class="box">KJ-03: Funksionet kryesore përdoren edhe në 375px.</div>
+    <div class="box">KJ-06: Blerësi nuk e ndryshon ofertën e fermerit (403).</div>
+  </section>
+
+  <section class="slide">
+    <h2>Pse ky tech stack?</h2>
+    <p class="arch">React
+  ↓ HTTPS / REST JSON
+Spring Boot (Java)
+  ↓ JPA
+MySQL</p>
+    <ul>
+      <li><strong>React</strong> – lista e fermerëve, katalogu, ofertat, porositë.</li>
+      <li><strong>Spring Boot</strong> – gjuha e studimeve; REST dhe siguri.</li>
+      <li><strong>MySQL</strong> – relacioni fermer–produkt–porosi me PK/FK.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Arkitektura</h2>
+    <p class="arch">[ Shfletuesi / React ]
+          HTTPS JSON
+[ API + Spring Security / JWT ]
+          rregulla (stoku, pronësia)
+[ JPA ]
+[ MySQL: fermer, produkt, prodhim, oferta, porosi ]</p>
+    <p>UI nuk flet drejtpërdrejt me databazën.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Entitetet kryesore</h2>
+    <p>Përdorues, Fermer, Ngastër, Kategori, Produkt bujqësor, Prodhim, Ofertë, Blerës, Porosi.</p>
+    <p><strong>Të detyrueshme (shembull):</strong> fermeri duhet të ketë komunë, fshat dhe sipërfaqe; prodhimi duhet të ketë fermer, produkt, datë vjeljeje dhe sasi &gt; 0.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Pse 1:N dhe jo N:N?</h2>
+    <div class="box"><strong>Fermer → Ngastër = 1:N.</strong> Toka i takon një fermeri.</div>
+    <div class="box"><strong>Fermer ↔ Produkt = N:N (tabela prodhim).</strong> Një fermer prodhon shumë produkte; të njëjtat “Domate” i prodhojnë shumë fermerë. Ky është relacioni qendror i temës.</div>
+    <div class="box"><strong>Kategori → Produkt = 1:N.</strong> “Domate” i takon “Perimeve”, jo shumë kategorive.</div>
+    <div class="box"><strong>Ofertë → Porosi = 1:N.</strong> Disa blerës porositin të njëjtën ofertë; një porosi i takon një produkt-oferte.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Plan deri te Raporti 2</h2>
+    <ol>
+      <li>Hyrje/regjistrim me JWT.</li>
+      <li>Profili i fermerit + katalogu i produkteve.</li>
+      <li>Ngastrat + prodhimi.</li>
+      <li>Ofertat dhe filtrim.</li>
+      <li>Porositë + dashboard i thjeshtë.</li>
+    </ol>
+    <p>Pagesa, PDF dhe shporta me shumë artikuj mbeten pas Raportit 2.</p>
+  </section>
+
+  <section class="slide">
+    <h2>Jashtë scope-it këtë semestër</h2>
+    <ul>
+      <li>Pagesë online.</li>
+      <li>Aplikacion native celular.</li>
+      <li>Punëtorë, bagëti, vaksinime, detyra ditore të fermës.</li>
+      <li>IoT, AI, e-Kosova.</li>
+      <li>Shportë me shumë produkte në një porosi.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Çfarë dorëzohet sot</h2>
+    <ul>
+      <li>Repo me strukturë: <code>backend/</code>, <code>frontend/</code>, <code>database/</code>.</li>
+      <li>Raporti sipas temës: <code>docs/RAPORTI_TEKNIK_1.md</code>.</li>
+      <li>Skema SQL: <code>database/schema.sql</code>.</li>
+      <li>Ky prezantim: <code>docs/prezantim.html</code>.</li>
+    </ul>
+    <p>Funksionet nuk janë gati — modeli është i arsyetuar, siç kërkon Raporti 1.</p>
+  </section>
+
+  <div class="hint">Tastet: ← → ose klik</div>
+  <div class="nav" id="counter">1 / 14</div>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    let i = 0;
+    const counter = document.getElementById("counter");
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("active", k === i));
+      counter.textContent = (i + 1) + " / " + slides.length;
+    }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); show(i + 1); }
+      if (e.key === "ArrowLeft") show(i - 1);
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      show(e.clientX > innerWidth / 2 ? i + 1 : i - 1);
+    });
+  </script>
+</body>
+</html>
