@@ -7,7 +7,6 @@ Aplikacion web ku regjistrohen fermerët, katalogu i produkteve bujqësore, prod
 **Email:** 240329048.b@uni-prizren.com  
 **Repository:** [github.com/MendimShala/Sistem-menaxhimi-Fermereve](https://github.com/MendimShala/Sistem-menaxhimi-Fermereve)
 
-> Raporti Teknik 1 nuk kërkon aplikacion të përfunduar. Ky repo ka strukturën fillestare, kërkesat, arkitekturën dhe modelin e databazës.
 
 ## Struktura
 
