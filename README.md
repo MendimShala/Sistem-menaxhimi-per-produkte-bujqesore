@@ -1,11 +1,11 @@
-# Sistemi për Menaxhimin e Fermerëve dhe Produkteve Bujqësore
+# Sistemi për Menaxhimin e Produkteve Bujqësore
 
 Aplikacion web ku regjistrohen fermerët, katalogu i produkteve bujqësore, prodhimi, ofertat për shitje dhe porositë e blerësve.
 
 **Lënda:** Projekt – Praktikë Profesionale | Semestri V  
 **Studenti:** Mendim Shala  
 **Email:** 240329048.b@uni-prizren.com  
-**Repository:** [github.com/MendimShala/Sistem-menaxhimi-Fermereve](https://github.com/MendimShala/Sistem-menaxhimi-Fermereve)
+**Repository:** [https://github.com/MendimShala/Sistem-menaxhimi-per-produkte-bujqesore](https://github.com/MendimShala/Sistem-menaxhimi-per-produkte-bujqesore)
 
 
 ## Struktura
@@ -28,14 +28,3 @@ Aplikacion web ku regjistrohen fermerët, katalogu i produkteve bujqësore, prod
 | Backend   | Java Spring Boot  | REST, validim, JWT |
 | Databaza  | MySQL             | Relacione PK/FK |
 
-## Prezantimi
-
-Hap në shfletues: `docs/prezantim.html`
-
-## Dorëzimi i Raportit 1
-
-- [x] Prezantimi
-- [x] Linku i repository-t
-- [x] Diagrami i arkitekturës
-- [x] Modeli fillestar i databazës
-- [x] Kërkesat dhe funksionalitetet kryesore
